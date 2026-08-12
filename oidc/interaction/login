@@ -1,0 +1,589 @@
+<html>
+    <head>
+        <link
+            href="https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:400,700|Teko:400,700&amp;subset=cyrillic,vietnamese"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100vw;
+                max-height: 100vh;
+            }
+
+            img, label, input, a {
+                display: block;
+            }
+
+            input, a, button {
+                font-family: 'Teko', 'Oswald', 'Microsoft Jhenghei', sans-serif;
+            }
+
+            form {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #0b0c0d;
+                box-sizing: border-box;
+                width: 400px;
+                min-height: 100vh;
+                margin: 0;
+                padding: 38px 16px 16px 16px;
+                overflow: hidden;
+            }
+
+            .top-yellow-bar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+
+            .top-menu {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+
+            .button {
+                border: none;
+                cursor: pointer;
+                height: 17px;
+                margin-left: 10px;
+                opacity: 0.5;
+                padding: 0;
+                width: 17px;
+            }
+
+            .minimize {
+                background-image: url('http://localhost/live/global-account-management/assets/img/btn_window_minimize.png');
+            }
+
+            .close {
+                background-image: url('http://localhost/live/global-account-management/assets/img/btn_window_close.png');
+            }
+
+            .logo {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 417px;
+                margin-bottom: 50px;
+                margin-top: 20px;
+            }
+
+            .checkbox {
+                position: absolute;
+                left: -1000px;
+            }
+
+            .checkbox:checked::after {
+                content: " ";
+                position: absolute;
+                border-bottom: 2px solid #f2a900;
+                border-right: 2px solid #f2a900;
+                width: 5px;
+                height: 12px;
+                top: 0px;
+                transform: rotateZ(40deg);
+            }
+
+            .checkbox.checkbox-left:checked::after {
+                left: 1023px;
+            }
+
+            .checkbox.checkbox-right:checked::after {
+                left: 1362px;
+            }
+
+            .checkbox-label {
+                font-family: 'Roboto', 'Microsoft Jhenghei', sans-serif;
+                font-size: 18px;
+                color: #999999;
+                cursor: pointer;
+                vertical-align: middle;
+            }
+
+            .checkbox-label.checkbox-left {
+                padding-left: 5px;
+            }
+
+            .checkbox-label.checkbox-right {
+                padding-right: 5px;
+            }
+
+            .checkbox-label.checkbox-left::before {
+                display: inline-block;
+                width: 17px;
+                height: 17px;
+                vertical-align: middle;
+                background-color: #707070;
+                border: 1px solid #909090;
+                content: " ";
+                cursor: pointer;
+                margin-right: 8px;
+            }
+
+            .checkbox-label.checkbox-right::after {
+                display: inline-block;
+                width: 17px;
+                height: 17px;
+                vertical-align: middle;
+                background-color: #707070;
+                border: 1px solid #909090;
+                content: " ";
+                cursor: pointer;
+                margin-left: 8px;
+            }
+
+            .faction-input {
+                position: absolute;
+                left: -9999px;
+            }
+
+            .input-field {
+                background-color: rgba(48, 34, 0, 0.6);
+                border-color: #765200;
+                border-radius: 2px;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+                color: #ffffff;
+                font-size: 20px;
+                margin-top: 2px;
+                margin-bottom: 1.2rem;
+                height: 51px;
+                padding-bottom: calc(0.375em - 1px);
+                padding-left: calc(0.625em - 1px);
+                padding-right: calc(0.625em - 1px);
+                padding-top: calc(0.375em - 1px);
+                width: 100%;
+            }
+
+            .input-field:active {
+                border-color: #765200;
+                box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+            }
+
+            .input-field::placeholder {
+                color: #e7a200;
+            }
+
+            .discord-login {
+                background-color: #7289da;
+            }
+
+            .fb-login {
+                background-color: #4267b2;
+            }
+
+            .google-login {
+                background-color: white;
+            }
+
+            .line-login {
+                background-color: #13b018;
+            }
+
+            .reddit-login {
+                background-color: #ff4500;
+            }
+
+            .twitter-login {
+                background-color: #247db3;
+            }
+
+            .vk-login {
+                background-color: #4872a3;
+            }
+
+            .social-login {
+                display: flex;
+                align-items: center;
+                border: 1px solid rgba(0, 0, 0, 0.6);
+                border-radius: 3px;
+                padding: 10px;
+            }
+
+            .platform-button-wrapper {
+                display: flex;
+                justify-content: center;
+                alighn-items: center;
+                flex-wrap: wrap;
+            }
+
+            .platform-button-wrapper a {
+                margin-right: 10px;
+            }
+
+            .platform-button-wrapper a:last-child {
+                margin-right: 0px;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .link {
+                color: #f2aa00;
+                cursor: pointer;
+                font-size: 18px;
+                text-decoration: none;
+            }
+
+            .link-icon {
+                width: 20px;
+                height: 20px;
+            }
+            .error-link {
+                font-size: 16px;
+                font-family: 'Roboto', 'Microsoft Jhenghei', sans-serif;
+                display:inline;
+            }
+
+            .notification {
+                font-family: 'Roboto', 'Microsoft Jhenghei', sans-serif;
+                padding: 10px;
+                background-color: #f7c95e;
+                border-radius: 4px;
+                position: absolute;
+                width: calc(100% - 50px);
+                bottom: 15px;
+                transition: bottom 0.3s;
+                word-break: break-all;
+            }
+            .notification.hide {
+                bottom: -200px;
+            }
+
+            .resend-button {
+                display: inherit;
+                margin: 10px auto;
+                font-size: 1.25rem;
+                cursor: pointer;
+                padding-left: 15px;
+                padding-right: 15px;
+                background-color: #f2aa00;
+                border: 1px solid transparent;
+            }
+
+            .resend-button:hover {
+                background-color: #e7a200;
+            }
+
+            .rtl {
+                text-align: right;
+            }
+
+            .submit {
+                background-color: #f2aa00;
+                color: #222222;
+                cursor: pointer;
+                border: 1px solid transparent;
+                font-size: 1.5rem;
+                font-weight: 600;
+                letter-spacing: 2px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+                padding: 7px;
+                width: 100%;
+            }
+
+            .submit:hover {
+                background-color: #e7a200;
+            }
+        </style>
+        <!-- Google Tag Manager -->
+        <script>
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WHWTBZX');
+        </script>
+        <!-- End Google Tag Manager -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6LfapbYUAAAAAGqqePOX3oiNl5O0L7YWwoztq0cC"></script>
+        <script>
+            var launcher;
+            var timer = null;
+            var isLoading = false;
+            window.onload = function () {
+                if (window.opener && window.opener !== window) {
+                    window.opener.location.href = location.href;
+                    window.close();
+                }
+
+                if (window.CefSharp) {
+                    window.CefSharp.BindObjectAsync('_launcher_object_').then(function () {
+                        launcher = window._launcher_object_;
+                        launcher.getSavedId().then(function (email) {
+                            if (email) {
+                                document.getElementById('email-input').value = email;
+                                document.getElementById('save-checkbox').checked = true;
+                            }
+                        });
+                    });
+                } else {
+                    launcher = {
+                        close: function () { console.log('close!'); },
+                        minimize: function () { console.log('minimize!'); },
+                        openDefaultBrowser: function (link) { console.log('open browser ' + link + '!'); },
+                        saveEmail: function() { console.log('store email'); }
+                    };
+                }
+
+                window.addEventListener('keyup', function(e) {
+                    if (event.getModifierState && event.getModifierState("CapsLock")) {
+                        setMessage(`&lt;Feststelltaste&gt; ist an.`);
+                    } else {
+                        hideMessage();
+                    }
+
+                    if (e.keyCode === 13) {
+                        login();
+                    }
+                })
+            }
+
+            function openSocialPopup(platform) {
+                try {
+                    launcher.saveEmail('');
+                } catch(e) {
+                    console.log(e);
+                }
+
+                const sizes = {
+                    discord: {
+                        width: 845,
+                        height: 900,
+                    },
+                    facebook: {
+                        width: 1080,
+                        height: 900,
+                    },
+                    google: {
+                        width: 845,
+                        height: 900,
+                    },
+                    line: {
+                        width: 845,
+                        height: 900,
+                    },
+                    reddit: {
+                        width: 845,
+                        height: 900,
+                    },
+                    twitter: {
+                        width: 845,
+                        height: 900,
+                    },
+                    vk: {
+                        width: 845,
+                        height: 900,
+                    }
+                }
+
+                var x = screen.width/2 - sizes[platform].width/2;
+                var y = screen.height/2 - sizes[platform].height/2;
+                var url = '/oidc/interaction/social/'
+                    + platform
+                    + '?display=popup&oidc_client=26995eff-42b5-4606-8f2f-4fce296ecd2a';
+
+                window.open(
+                    url,
+                    'FACEBOOK_LOGIN',
+                    'width=' + sizes[platform].width + ',height=' + sizes[platform].height + ',left=' + x + ',top=' + y);
+
+                if (platform === 'vk') {
+                    window.setTimeout(function() {
+                        window.open(
+                            url,
+                            'FACEBOOK_LOGIN',
+                            'width=' + sizes[platform].width + ',height=' + sizes[platform].height + ',left=' + x + ',top=' + y);
+                    }, 400);
+                }
+            }
+
+            function closeWindow() {
+                if (launcher) {
+                    launcher.close();
+                }
+            }
+
+            function minimize() {
+                if (launcher) {
+                    launcher.minimize();
+                }
+            }
+
+            function openLink(link) {
+                if (launcher) {
+                    launcher.openDefaultBrowser(location.origin + link);
+                }
+            }
+
+            function resendActivation(event) {
+                event.preventDefault();
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/profile/resend', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({
+                    _csrf: 'PsJHbcwK-UQoZStoGM4A0Ny_DRLSJci4_ICs'
+                }));
+                xhr.onload = function() {
+                    if (this.responseText) {
+                        var result = JSON.parse(this.responseText);
+                        if (result.message === 'register.emailed') {
+                            setMessage(`Aktivierungs-E-Mail wurde gesendet.`);
+                            var resendButton = document.getElementById('resend-button');
+                            resendButton.parentNode.removeChild(resendButton);
+                        }
+                    }
+                }
+            }
+
+            function setMessage(message) {
+                document.getElementById('notification').innerHTML = message;
+                document.getElementById('notification').className = 'notification';
+
+                clearTimeout(timer);
+                timer = setTimeout(hideMessage, 15 * 1000);
+            }
+
+            function hideMessage() {
+                document.getElementById('notification').className = 'notification hide';
+            }
+
+            function validate() {
+                var email = document.getElementById('email-input').value;
+                var password = document.getElementById('pw-input').value;
+                if (!email || email.length === 0) {
+                    setMessage(`Eine E-Mail-Adresse ist erforderlich.`);
+                    return false;
+                }
+                if (!(/.*@+.*/.test(email))) {
+                    setMessage(`Bitte gib eine gültige E-Mail-Adresse ein.`);
+                    return false;
+                }
+                if (!password || password.length === 0) {
+                    setMessage(`Ein Passwort ist erforderlich.`);
+                    return false;
+                }
+                return true;
+            }
+
+            function saveEmail() {
+                if (document.getElementById('save-checkbox').checked) {
+                    launcher.saveEmail(document.getElementById('email-input').value);
+                } else {
+                    launcher.saveEmail('');
+                }
+            }
+
+            function login() {
+                let recaptchaInput = document.getElementsByName('recaptcha')[0];
+
+                if (!validate() || isLoading) {
+                    return;
+                }
+
+
+                saveEmail();
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6LfapbYUAAAAAGqqePOX3oiNl5O0L7YWwoztq0cC', {action: 'submit'}).then(function(token) {
+                        recaptchaInput.value = token;
+                        document.forms[0].method = 'post';
+                        document.forms[0].submit();
+                        isLoading = true;
+                    });
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHWTBZX"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <form class="" action="/auth/local" method="post" >
+            <img class="top-yellow-bar"
+                src="http://localhost/live/global-account-management/assets/img/yellowbar.png"/>
+            <div class="top-menu">
+                <button class="button minimize" type="button" onclick="minimize();"></button>
+                <button class="button close" type="button" onclick="closeWindow();"></button>
+            </div>
+            <img class="logo"
+                alt="PUBG Lite Logo"
+                src="http://localhost/live/global-account-management/assets/img/pubglite.png"/>
+                <div class="notification hidden" id="notification"></div>
+            <input type="hidden" name="_csrf" value="PsJHbcwK-UQoZStoGM4A0Ny_DRLSJci4_ICs"/>
+            <input type="hidden" name="oidc_client" value="26995eff-42b5-4606-8f2f-4fce296ecd2a"/>
+            <input type="hidden" id="recaptcha" name="recaptcha" value=""/>
+            <input
+                class="input-field"
+                type="text"
+                name="email"
+                id="email-input"
+                placeholder="E-MAIL-ADRESSE"
+            />
+            <input
+                class="input-field"
+                type="password"
+                name="password"
+                id="pw-input"
+                placeholder="PASSWORT"
+            />
+            <input class="faction-input" type="text" name="faction" tabindex="-1"/>
+            <label>
+                <input
+                    class="checkbox checkbox-left"
+                    type="checkbox"
+                    id="save-checkbox"
+                    name="savedId"
+                />
+                <span class="checkbox-label checkbox-left">E-Mail-Adresse speichern</span>
+            </label>
+            <button type="button" class="submit" onclick="login()">EINLOGGEN</button>
+            <div class="platform-button-wrapper">
+                    <a href="#" onclick="openSocialPopup('discord')">
+                        <div class="social-login discord-login">
+                            <img width="20px" height="20px" src="http://localhost/live/global-account-management/assets/icons/white/discord.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('facebook')">
+                        <div class="social-login fb-login">
+                            <img width="20px" height="20px" src="http://localhost/live/global-account-management/assets/icons/white/facebook.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('google')">
+                        <div class="social-login google-login">
+                            <img width="20px" height="20px" src="http://localhost/live/global-account-management/assets/img/g-logo.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('reddit')">
+                        <div class="social-login reddit-login">
+                            <img width="20px" height="20px" src="http://localhost/live/global-account-management/assets/icons/snoo_head.png"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('vk')">
+                        <div class="social-login vk-login">
+                            <img width="20px" height="20px" src="http://localhost/live/global-account-management/assets/img/vk-logo.svg"/>
+                        </div>
+                    </a>
+                    <a href="#" onclick="openSocialPopup('twitter')">
+                        <div class="social-login twitter-login">
+                            <img width="20px" height="20px" src="http://localhost/live/global-account-management/assets/img/w_twitter.png"/>
+                        </div>
+                    </a>
+            </div>
+            
+            <a class="link" onclick="openLink('/register?client_id=26995eff-42b5-4606-8f2f-4fce296ecd2a')">
+                    - Ich habe kein Konto
+            </a>
+            <a class="link" onclick="openLink('/forgot?client_id=26995eff-42b5-4606-8f2f-4fce296ecd2a')">
+                    - Ich habe mein Passwort vergessen
+            </a>
+        </form>
+    </body>
+</html>

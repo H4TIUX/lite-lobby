@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>litePcAuthSuccess</title>
+        <script type="text/javascript">
+            (async function() {
+                if (window.CefSharp) {
+                    window.CefSharp.BindObjectAsync('_launcher_object_')
+                    .then(() => {
+                        window._launcher_object_.onLogin('QFOMF4Z5RS7XELLGFYCQNZVUH5FVOAKFMRZQQAOS7URBGRSVJL3Q', 'globalaccount.61fd58ba-ad8b-409c-91b8-8ad83ba45b40', 'warranty@voider.de', true, 'DE', '1574276982748');
+
+                        if (window.opener && window.opener !== window) {
+                            window.close();
+                        }
+                    });
+                }
+            })();
+        </script>
+    </head>
+    <body style="background-color: #000;"></body>
+</html>

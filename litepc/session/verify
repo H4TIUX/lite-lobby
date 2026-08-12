@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>litePcClientVerify</title>
+        <script type="text/javascript">
+            window.setInterval(() => {
+                window.location.reload(true);
+            }, 600000);
+        </script>
+    </head>
+    <body style="background-color: #000;"></body>
+</html>
