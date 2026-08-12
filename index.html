@@ -20,10 +20,10 @@
         } catch(e) {}
         var _wsTokenSuffix = _authToken ? '?token=' + encodeURIComponent(_authToken) : '';
         var broConfiguration =
-        {   "gate": "http://localhost:10000/index.html",
-            "uri": "http://localhost:10000/publicproxy",
-            "entry": "ws://localhost:10000/userproxy" + _wsTokenSuffix,
-            "secureEntry": "ws://localhost:10000/userproxy" + _wsTokenSuffix,
+        {   "gate": "http://217.199.220.41:10000/index.html",
+            "uri": "http://217.199.220.41:10000/publicproxy",
+            "entry": "ws://217.199.220.41:10000/userproxy" + _wsTokenSuffix,
+            "secureEntry": "ws://217.199.220.41:10000/userproxy" + _wsTokenSuffix,
             "useSecure": false,
             "credential":
             {    "lpc": "provider={provider}&ticket={ticket}&playerNetId={playerNetId}&cc={cc}&clientGameVersion={clientGameVersion}"    },
@@ -46,7 +46,7 @@
                 token: "localtoken",
                 playerNetId: "L.lpc,localplayer",
                 userSerial: "L.lpc,localplayer",
-                fullGameVersion: "0.7.0.100",
+                fullGameVersion: "1.4.0.15",
                 outerKey: "",
                 antiCheatSolution: "be",
                 appId: "lpc"
@@ -62,7 +62,7 @@
             }
             if (!_engine.GetGameVersion) {
                 Object.defineProperty(_engine, 'GetGameVersion', {
-                    get: function() { return "0.7.0"; },
+                    get: function() { return "1.4.0"; },
                     configurable: true
                 });
             }
